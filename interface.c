@@ -181,7 +181,17 @@ void runCommand(char command[])
             loadDataToDisk(fileName);
         }
         else if (strcmp(arg1, "--os") == 0)
-            loadOSCode(fileName);
+        {
+            if(strcmp(intType, "primary") == 0)
+                loadOSCode(fileName);
+            else if(strcmp(intType, "secondary") == 0)
+                loadOS2Code(fileName);
+            else
+            {
+                printf("Invalid argument for \"--os=\".\n");
+                return;
+            }
+        }
         else if (strcmp(arg1, "--int") == 0)
         {
             if (strcmp(intType, "timer") == 0)

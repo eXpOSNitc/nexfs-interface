@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 #define XSM_WORD_SIZE 16
-#define XSM_MEMORY_NUMPAGES 128
+#define XSM_MEMORY_NUMPAGES 144
 #define XSM_PAGE_SIZE 512
 
 #define XFS_SUCCESS 0

@@ -32,6 +32,7 @@ void addext(char *filename, char *ext);
 int loadCode(char *fileName, int disk_start_block, int no_of_disk_blocks);
 int loadCodeWithLabels(char *infile, int disk_block, int no_of_disk_blocks, int mem_page);
 int loadOSCode(char *infile);
+int loadOS2Code(char *infile);
 int loadTimerCode(char *infile);
 int loadDiskControllerIntCode(char *infile);
 int loadConsoleIntCode(char *infile);

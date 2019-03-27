@@ -532,6 +532,12 @@ int loadOSCode(char *infile)
     return loadCodeWithLabels(infile, OS_STARTUP_CODE, OS_STARTUP_CODE_SIZE, MEM_OS_STARTUP_CODE);
 }
 
+/* Loads the OS Startup code for Second Core */
+int loadOS2Code(char *infile)
+{
+    return loadCodeWithLabels(infile, OS2_STARTUP_CODE, OS_STARTUP_CODE_SIZE, MEM_OS2_STARTUP_CODE);
+}
+
 /* Loads the Timer Interrupt Routine */
 int loadTimerCode(char *infile)
 {
@@ -559,6 +565,9 @@ int loadExHandlerToDisk(char *infile)
 /* Loads the Interrupt Routines */
 int loadIntCode(char *infile, int intNo)
 {
+    if (intNo == 19)
+        return loadCodeWithLabels(infile, INT19, INT_SIZE, MEM_INT19);
+    
     return loadCodeWithLabels(infile, ((intNo - 1) * INT_SIZE) + INT1, INT_SIZE, ((intNo - 1) * MEM_INT_SIZE) + MEM_INT1);
 }
 
@@ -808,6 +817,9 @@ int deleteExHandlerFromDisk()
 /* Deletes the Interrupt Routines */
 int deleteIntCodeFromDisk(int intNo)
 {
+    if(intNo == 19)
+        return clearDiskBlocks(INT19, INT_SIZE);
+        
     return clearDiskBlocks(((intNo - 1) * INT_SIZE) + INT1, INT_SIZE);
 }
 

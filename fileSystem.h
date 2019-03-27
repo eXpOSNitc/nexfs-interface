@@ -8,6 +8,7 @@
 #define WORD_SIZE 16
 
 #define OS_STARTUP_CODE 0
+#define OS2_STARTUP_CODE 71
 #define DISK_FREE_LIST 2
 #define INODE 3
 #define ROOTFILE 5
@@ -40,6 +41,7 @@
 #define INT16 47
 #define INT17 49
 #define INT18 51
+#define INT19 69
 #define MOD0 53
 #define MOD1 55
 #define MOD2 57
@@ -79,6 +81,7 @@
 #define INT16_SIZE 2
 #define INT17_SIZE 2
 #define INT18_SIZE 2
+#define INT19_SIZE 2
 #define INT_SIZE INT4_SIZE
 #define MOD0_SIZE 2
 #define MOD1_SIZE 2
@@ -93,7 +96,7 @@
 #define INODE 3
 #define NO_OF_INODE_BLOCKS 2
 
-#define NO_OF_INTERRUPTS 18
+#define NO_OF_INTERRUPTS 19
 #define NO_OF_MODULES 8
 
 #define DATA_START_BLOCK 69
