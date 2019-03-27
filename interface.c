@@ -378,7 +378,14 @@ char **xfs_cli_completion(const char *text, int start, int end)
         matches = rl_completion_matches(text, xfs_cli_command_gen);
     else if (!strcmp(pch, "load"))
     {
-        if (start >= 6 &&
+        if (start >= 5 &&
+            rl_line_buffer[start - 5] == '-' &&
+            rl_line_buffer[start - 4] == '-' &&
+            rl_line_buffer[start - 3] == 'o' &&
+            rl_line_buffer[start - 2] == 's' &&
+            rl_line_buffer[start - 1] == '=')
+            matches = rl_completion_matches(text, xfs_cli_os_gen);
+        else if (start >= 6 &&
             rl_line_buffer[start - 6] == '-' &&
             rl_line_buffer[start - 5] == '-' &&
             rl_line_buffer[start - 4] == 'i' &&
@@ -434,7 +441,7 @@ char *xfs_cli_opt_gen(const char *text, int state)
 {
     static int index, len;
     const int opt_len = 10;
-    const char *options[10] = {"--int=", "--exec", "--data", "--init", "--os", "--idle", "--shell", "--library", "--exhandler", "--module"};
+    const char *options[10] = {"--int=", "--os=", "--exec", "--data", "--init", "--idle", "--shell", "--library", "--exhandler", "--module"};
 
     if (state == 0)
     {
@@ -446,8 +453,8 @@ char *xfs_cli_opt_gen(const char *text, int state)
     {
         if (!strncmp(text, options[index], len))
         {
-            // Prevent readline from appending a space after possible --int=
-            if (index == 0)
+            // Prevent readline from appending a space after possible --int= and --os=
+            if (index >=0 && index < 2)
                 rl_completion_append_character = '\0';
             return strdup(options[index++]);
         }
@@ -488,12 +495,32 @@ char *xfs_cli_file_gen(const char *text, int state)
     return result;
 }
 
+/* XFS os generation */
+char *xfs_cli_os_gen(const char *text, int state)
+{
+    static int index, len;
+    const int os_len = 2;
+    const char *os[2] = {"primary", "secondary"};
+
+    if (state == 0)
+    {
+        index = 0;
+        len = strlen(text);
+    }
+
+    for (; index < os_len; ++index)
+        if (!strncmp(text, os[index], len))
+            return strdup(os[index++]);
+
+    return NULL;
+}
+
 /* XFS int generation */
 char *xfs_cli_int_gen(const char *text, int state)
 {
     static int index, len;
-    const int ints_len = 18;
-    const char *ints[18] = {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "timer", "disk", "console"};
+    const int ints_len = 19;
+    const char *ints[19] = {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "timer", "disk", "console"};
 
     if (state == 0)
     {

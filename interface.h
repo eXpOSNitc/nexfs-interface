@@ -17,6 +17,7 @@ char **xfs_cli_completion(const char *text, int start, int end);
 char *xfs_cli_command_gen(const char *text, int state);
 char *xfs_cli_opt_gen(const char *text, int state);
 char *xfs_cli_file_gen(const char *text, int state);
+char *xfs_cli_os_gen(const char *text, int state);
 char *xfs_cli_int_gen(const char *text, int state);
 char *xfs_cli_module_gen(const char *text, int state);
 char *xfs_cli_dump_gen(const char *text, int state);
