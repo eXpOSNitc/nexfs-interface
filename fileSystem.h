@@ -2,6 +2,8 @@
 
 #define XFS_FILESYS_H
 
+#include "constants.h"
+
 #define BLOCK_SIZE 512
 #define WORD_SIZE 16
 

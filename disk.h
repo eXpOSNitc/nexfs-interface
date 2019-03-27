@@ -3,9 +3,9 @@
 #define XFS_DISK_H
 
 #include "fileSystem.h"
+#include "exception.h"
 
 #define DISK_NAME "disk.xfs"
-#define BOOT_BLOCK 0
 
 #define DISK_NO_FORMAT 0
 #define DISK_FORMAT 1

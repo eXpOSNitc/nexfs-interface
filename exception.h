@@ -1,6 +1,6 @@
 #ifndef XFS_EXCEPTION_H
 
-#define EXCEPTION_H
+#define XFS_EXCEPTION_H
 
 #include <setjmp.h>
 

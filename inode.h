@@ -2,10 +2,15 @@
 
 #define XFS_INODE_H
 
-int removeInodeEntry(int locationOfInode);
-int getDataBlocks(int *basicBlockAddr, int locationOfInode);
+#include "disk.h"
+#include "virtualDisk.h"
+
 int FindEmptyInodeEntry();
-void AddEntryToMemInode(int startIndexInInode, int fileType, char *nameOfFile, int size_of_file, int *addrOfDataBlocks);
 int getInodeEntry(char *name);
+void AddEntryToMemInode(int startIndex, int fileType, char *nameOfFile, int fileSize, int *addrOfDataBlocks);
+void AddEntryToMemRootFile(int startIndexInRootFile, int fileType, char *nameOfFile, int size_of_file);
+int removeInodeEntry(int locationOfInode);
+int removeRootFileEntry(int locationOfRootFile);
+int getDataBlocks(int *dataBlockAddr, int locationOfInode);
 
 #endif
