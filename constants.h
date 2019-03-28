@@ -6,7 +6,7 @@
 
 #define XSM_WORD_SIZE 16
 #define XSM_MEMORY_NUMPAGES 144
-#define XSM_PAGE_SIZE 512
+#define XSM_PAGE_SIZE 528
 
 #define XFS_SUCCESS 0
 #define XFS_FAILURE -1
