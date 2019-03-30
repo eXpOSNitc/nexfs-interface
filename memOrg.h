@@ -2,7 +2,6 @@
 
 #define XFS_MEM_ORG
 
-
 #define MEM_OS_STARTUP_CODE 1
 #define MEM_OS2_STARTUP_CODE 128
 #define MEM_EX_HANDLER 2
@@ -12,6 +11,7 @@
 #define MEM_INT1 4
 #define MEM_INT19 130
 #define MEM_MOD0 40
+#define MEM_MOD8 132
 #define MEM_INIT_PAGE 65
 #define MEM_LIBRARY_PAGE 63
 #define MEM_INIT_BASIC_BLOCK 65

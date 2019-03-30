@@ -71,7 +71,8 @@ void runCommand(char command[])
         printf(" load --exec <pathname> \n\t Loads an executable file to XFS disk \n");
         printf(" load --data <pathname> \n\t Loads a data file to XFS disk \n");
         printf(" load --init <pathname> \n\t Loads INIT code to XFS disk \n");
-        printf(" load --os <pathname> \n\t Loads OS startup code to XFS disk \n");
+        printf(" load --os=primary <pathname> \n\t Loads OS startup code for the primary core to XFS disk \n");
+        printf(" load --os=secondary <pathname> \n\t Loads OS startup code for the secondary core to XFS disk \n");
         printf(" load --idle <pathname> \n\t Loads Idle code to XFS disk \n");
         printf(" load --shell <pathname> \n\t Loads Shell code to XFS disk \n");
         printf(" load --library <pathname> \n\t Loads Library code to XFS disk \n");
@@ -182,9 +183,9 @@ void runCommand(char command[])
         }
         else if (strcmp(arg1, "--os") == 0)
         {
-            if(strcmp(intType, "primary") == 0)
+            if (strcmp(intType, "primary") == 0)
                 loadOSCode(fileName);
-            else if(strcmp(intType, "secondary") == 0)
+            else if (strcmp(intType, "secondary") == 0)
                 loadOS2Code(fileName);
             else
             {
@@ -386,12 +387,12 @@ char **xfs_cli_completion(const char *text, int start, int end)
             rl_line_buffer[start - 1] == '=')
             matches = rl_completion_matches(text, xfs_cli_os_gen);
         else if (start >= 6 &&
-            rl_line_buffer[start - 6] == '-' &&
-            rl_line_buffer[start - 5] == '-' &&
-            rl_line_buffer[start - 4] == 'i' &&
-            rl_line_buffer[start - 3] == 'n' &&
-            rl_line_buffer[start - 2] == 't' &&
-            rl_line_buffer[start - 1] == '=')
+                 rl_line_buffer[start - 6] == '-' &&
+                 rl_line_buffer[start - 5] == '-' &&
+                 rl_line_buffer[start - 4] == 'i' &&
+                 rl_line_buffer[start - 3] == 'n' &&
+                 rl_line_buffer[start - 2] == 't' &&
+                 rl_line_buffer[start - 1] == '=')
             matches = rl_completion_matches(text, xfs_cli_int_gen);
         else
         {
@@ -454,7 +455,7 @@ char *xfs_cli_opt_gen(const char *text, int state)
         if (!strncmp(text, options[index], len))
         {
             // Prevent readline from appending a space after possible --int= and --os=
-            if (index >=0 && index < 2)
+            if (index >= 0 && index < 2)
                 rl_completion_append_character = '\0';
             return strdup(options[index++]);
         }
@@ -539,8 +540,8 @@ char *xfs_cli_int_gen(const char *text, int state)
 char *xfs_cli_module_gen(const char *text, int state)
 {
     static int index, len;
-    const int opt_len = 8;
-    const char *options[8] = {"0", "1", "2", "3", "4", "5", "6", "7"};
+    const int opt_len = 12;
+    const char *options[12] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"};
 
     if (state == 0)
     {

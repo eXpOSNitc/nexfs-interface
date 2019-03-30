@@ -13,7 +13,7 @@ extern BLOCK *disk;
 /* Initialise virtual disk */
 void virtual_disk_init()
 {
-    disk = (BLOCK *)malloc((NO_BLOCKS_TO_COPY + EXTRA_BLOCKS) * sizeof(BLOCK));
+    disk = (BLOCK *)malloc(XFS_NUM_BLOCKS * sizeof(BLOCK));
 }
 
 /* Empties a block in the memory copy of the disk file */

@@ -567,13 +567,16 @@ int loadIntCode(char *infile, int intNo)
 {
     if (intNo == 19)
         return loadCodeWithLabels(infile, INT19, INT_SIZE, MEM_INT19);
-    
+
     return loadCodeWithLabels(infile, ((intNo - 1) * INT_SIZE) + INT1, INT_SIZE, ((intNo - 1) * MEM_INT_SIZE) + MEM_INT1);
 }
 
 /* Loads the Module codes */
 int loadModuleCode(char *infile, int modNo)
 {
+    if (modNo >= 8)
+        return loadCodeWithLabels(infile, ((modNo - 8) * MOD_SIZE) + MOD8, MOD_SIZE, ((modNo - 8) * MEM_MOD_SIZE) + MEM_MOD8);
+
     return loadCodeWithLabels(infile, (modNo * MOD_SIZE) + MOD0, MOD_SIZE, (modNo * MEM_MOD_SIZE) + MEM_MOD0);
 }
 
@@ -817,15 +820,18 @@ int deleteExHandlerFromDisk()
 /* Deletes the Interrupt Routines */
 int deleteIntCodeFromDisk(int intNo)
 {
-    if(intNo == 19)
+    if (intNo == 19)
         return clearDiskBlocks(INT19, INT_SIZE);
-        
+
     return clearDiskBlocks(((intNo - 1) * INT_SIZE) + INT1, INT_SIZE);
 }
 
 /* Deletes the Module codes */
 int deleteModuleCodeFromDisk(int modNo)
 {
+    if (modNo >= 8)
+        return clearDiskBlocks(((modNo - 8) * MOD_SIZE) + MOD8, MOD_SIZE);
+
     return clearDiskBlocks((modNo * MOD_SIZE) + MOD0, MOD_SIZE);
 }
 

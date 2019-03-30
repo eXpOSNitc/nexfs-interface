@@ -50,6 +50,10 @@
 #define MOD5 63
 #define MOD6 65
 #define MOD7 67
+#define MOD8 516
+#define MOD9 518
+#define MOD10 520
+#define MOD11 522
 
 #define OS_STARTUP_CODE_SIZE 2
 #define NO_OF_FREE_LIST_BLOCKS 1
@@ -91,13 +95,17 @@
 #define MOD5_SIZE 2
 #define MOD6_SIZE 2
 #define MOD7_SIZE 2
+#define MOD8_SIZE 2
+#define MOD9_SIZE 2
+#define MOD10_SIZE 2
+#define MOD11_SIZE 2
 #define MOD_SIZE MOD0_SIZE
 
 #define INODE 3
 #define NO_OF_INODE_BLOCKS 2
 
 #define NO_OF_INTERRUPTS 19
-#define NO_OF_MODULES 8
+#define NO_OF_MODULES 11
 
 #define DATA_START_BLOCK 69
 #define NO_OF_DATA_BLOCKS 187
@@ -132,8 +140,7 @@
 #define ROOTFILE_ENTRY_PERMISSION 4
 #define ROOTFILE_ENTRY_SIZE 8
 
-#define NO_BLOCKS_TO_COPY 69
-#define EXTRA_BLOCKS 1
+#define XFS_NUM_BLOCKS 528
 #define TEMP_BLOCK 69
 #define INPUT_FILESIZE 200
 
