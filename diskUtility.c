@@ -535,7 +535,7 @@ int loadOSCode(char *infile)
 /* Loads the OS Startup code for Second Core */
 int loadOS2Code(char *infile)
 {
-    return loadCodeWithLabels(infile, OS2_STARTUP_CODE, OS_STARTUP_CODE_SIZE, MEM_OS2_STARTUP_CODE);
+    return loadCodeWithLabels(infile, OS2_STARTUP_CODE, OS2_STARTUP_CODE_SIZE, MEM_OS2_STARTUP_CODE);
 }
 
 /* Loads the Timer Interrupt Routine */
@@ -791,6 +791,12 @@ int loadExecutableToDisk(char *name)
 int deleteOSCodeFromDisk()
 {
     return clearDiskBlocks(OS_STARTUP_CODE, OS_STARTUP_CODE_SIZE);
+}
+
+/* Deletes the OS Startup code for Second core */
+int deleteOS2CodeFromDisk()
+{
+    return clearDiskBlocks(OS_STARTUP_CODE, OS2_STARTUP_CODE_SIZE);
 }
 
 /* Deletes the Timer Interrupt Routine */

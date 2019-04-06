@@ -46,6 +46,7 @@ int loadLibraryCode(char *infile);
 int loadDataToDisk(char *name);
 int loadExecutableToDisk(char *name);
 int deleteOSCodeFromDisk();
+int deleteOS2CodeFromDisk();
 int deleteTimerFromDisk();
 int deleteDiskControllerINTFromDisk();
 int deleteConsoleINTFromDisk();	
