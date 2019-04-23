@@ -79,9 +79,9 @@ void runCommand(char command[])
         printf(" load --int=timer <pathname>\n\t Loads Timer Interrupt routine to XFS disk \n");
         printf(" load --int=disk <pathname>\n\t Loads Disk Controller Interrupt routine to XFS disk \n");
         printf(" load --int=console <pathname>\n\t Loads Console Interrupt routine to XFS disk \n");
-        printf(" load --int=[4-18] <pathname>\n\t Loads the specified Interrupt routine to XFS disk \n");
+        printf(" load --int=[4-19] <pathname>\n\t Loads the specified Interrupt routine to XFS disk \n");
         printf(" load --exhandler <pathname> \n\t Loads exception handler routine to XFS disk \n");
-        printf(" load --module [0-7] <pathname>\n\t Loads the specified Module to XFS disk \n");
+        printf(" load --module [0-11] <pathname>\n\t Loads the specified Module to XFS disk \n");
         printf(" export <xfs_filename> <pathname>\n\t Exports a data file from XFS disk to UNIX file system\n");
         printf(" rm <xfs_filename>\n\t Removes a file from XFS disk \n");
         printf(" ls \n\t List all files\n");
